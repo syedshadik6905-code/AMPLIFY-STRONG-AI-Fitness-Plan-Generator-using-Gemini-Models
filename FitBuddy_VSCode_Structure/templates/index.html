@@ -1,0 +1,97 @@
+﻿<!-- FitBuddy user input form -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitBuddy AI</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>FitBuddy AI</h1>
+
+        <p class="subtitle">
+            Your personalized AI fitness companion
+        </p>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form action="/generate" method="post">
+
+            <label>User ID</label>
+            <input
+                type="text"
+                name="user_id"
+                placeholder="Enter your user ID"
+                required
+            >
+
+            <label>Name</label>
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Age</label>
+            <input
+                type="number"
+                name="age"
+                min="16"
+                max="100"
+                placeholder="Enter your age"
+                required
+            >
+
+            <label>Weight (kg)</label>
+            <input
+                type="number"
+                name="weight"
+                step="0.1"
+                min="1"
+                placeholder="Enter your weight"
+                required
+            >
+
+            <label>Fitness Goal</label>
+
+            <select name="goal" required>
+                <option value="">Select your goal</option>
+                <option value="Weight loss">Weight loss</option>
+                <option value="Muscle gain">Muscle gain</option>
+                <option value="General wellness">General wellness</option>
+                <option value="Flexibility">Flexibility</option>
+            </select>
+
+            <label>Workout Intensity</label>
+
+            <select name="intensity" required>
+                <option value="">Select intensity</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <button type="submit">
+                Generate My Workout Plan
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+﻿<!-- Generated workout plan and feedback form -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitBuddy Result</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>FitBuddy Plan</h1>
+
+        <div class="card">
+
+            <h2>User Information</h2>
+
+            <p>
+                <strong>Name:</strong>
+                {{ user.username }}
+            </p>
+
+            <p>
+                <strong>User ID:</strong>
+                {{ user.user_id }}
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                {{ user.age }}
+            </p>
+
+            <p>
+                <strong>Weight:</strong>
+                {{ user.weight }} kg
+            </p>
+
+            <p>
+                <strong>Goal:</strong>
+                {{ user.goal }}
+            </p>
+
+            <p>
+                <strong>Intensity:</strong>
+                {{ user.intensity }}
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>7-Day Workout Plan</h2>
+
+            <div class="plan">
+                <pre>{{ plan.updated_plan or plan.original_plan }}</pre>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Nutrition & Recovery Tip</h2>
+
+            <div class="plan">
+                <pre>{{ plan.nutrition_tip }}</pre>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Give Feedback</h2>
+
+            <form action="/feedback/{{ plan.id }}" method="post">
+
+                <input
+                    type="hidden"
+                    name="user_id"
+                    value="{{ user.user_id }}"
+                >
+
+                <textarea
+                    name="feedback_text"
+                    placeholder="Tell FitBuddy what you want to change..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Update My Plan
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <a class="link-button" href="/">
+            Create Another Plan
+        </a>
+
+    </div>
+
+</body>
+
+</html>
